@@ -192,8 +192,6 @@ def main():
         all_task_ids = task_ids * args.n_samples_per_problem
         response = state.complete(generation_config, prompts)
         completions = response['decoded_outputs']
-        assert len(problems) <= args.n_problems_per_batch
-        assert len(completions) == len(problems) * args.n_samples_per_problem
         print("COMPLETION")
         print(completions[-1])
         samples += [

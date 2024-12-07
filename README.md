@@ -92,7 +92,6 @@ The choices of `TASK_TYPE` include:
 
 ```
 ["humaneval", "mbpp", "humaneval_pro", "mbpp_pro", "humaneval_pro_cot", "mbpp_pro_cot", "humaneval_pro_1shot", "mbpp_pro_1shot"]
-
 ```
 
 To run API models, use
@@ -145,7 +144,6 @@ The choices of `DATASET` include:
 
 ```
 ["humaneval_pro", "mbpp_pro"]
-
 ```
 
 

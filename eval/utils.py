@@ -11,12 +11,12 @@ def get_swebench_problems() -> Dataset:
 
 
 def get_mbpp_pro_raw_problems() -> list[dict]:
-    problems = read_jsonl('/work/zhuotaodeng/yzj/evalpro/dataset/refined_mbpp_pro.json')
+    problems = read_jsonl('dataset/refined_mbpp_pro.json')
     return list(problems)
 
 
 def get_humaneval_pro_raw_problems() -> list[dict]:
-    problems = read_jsonl('/work/zhuotaodeng/yzj/evalpro/dataset/refined_humaneval_pro.json')
+    problems = read_jsonl('dataset/refined_humaneval_pro.json')
     return list(problems)
 
 def map_swebench_problem(p: Dataset) -> Dict[str, Any]:
