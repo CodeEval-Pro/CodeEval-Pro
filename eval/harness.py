@@ -56,7 +56,7 @@ def run_generated_py_file(references, generated_code, scripts_folder="./code_run
             file_path = f"{scripts_folder}{file_dir}/{file}"
             print(f"file_path={file_path}")
             try:  
-                subprocess.run(["python", file_path], check=True, stderr=subprocess.PIPE, universal_newlines=True, timeout = 10)
+                subprocess.run(["python", file_path], check=True, stderr=subprocess.PIPE, universal_newlines=True, timeout = 30)
                 status = 'Passed'
                 error_type = 'Passed'
             except subprocess.CalledProcessError as e:  
@@ -86,6 +86,7 @@ def run_generated_py_file(references, generated_code, scripts_folder="./code_run
     with open(Path(scripts_folder)/'basic_statistics.json', 'w') as f:
         json.dump(statistic, f, indent=4)
 
+    return statistic
 
 def evaluation(reference_path: str, gen_code_path: str):
     references = reference_path
@@ -109,6 +110,7 @@ def main():
     
     # Add command-line arguments
     parser.add_argument('--model_name', type=str, required=True, help='The model name')
+    parser.add_argument('--task', type=str, required=True, help='The task name')
     parser.add_argument('--dataset_path', type=str, required=True, help='Path to the problems JSON file.')
     parser.add_argument('--source_path', type=str, required=True, help='Path to the generated code JSONL file.')
     parser.add_argument('--save_path', type=str, required=True, help='Path to the log directory.')
@@ -156,22 +158,37 @@ def main():
     # Get the reference test codes
     reference = [d['test_code'] for d in problems] 
     
-    # Run the generated Python files and log the results
-    if args.run_code:
-        if (Path(args.save_path)/'log').exists():
-            raise ValueError('Log file has exisied.')
-        else:
-            run_generated_py_file(reference, gen_code, args.save_path+'/log/results/')
-            run_generated_py_file(reference, santized_gen_code, args.save_path+'/log/santized_results/')
 
-    gt_score = evaluation(reference, gt_code)
-    print(f"Result of Ground Truth : {gt_score}")
-    
-    gen_code_score = evaluation(reference, gen_code)
-    print(f"Result of Your Outputs : {gen_code_score}")
 
-    santized_gen_code_score = evaluation(reference, santized_gen_code)
-    print(f"Result of Your Santized Outputs : {santized_gen_code_score}")
+    if args.task == 'bigcodebench_lite_pro':
+        gt_statistic = run_generated_py_file(reference, gt_code, args.save_path+'/log/gt_results/')
+        gt_score = gt_statistic['error_stats']['Passed'] / len(gt_code)
+        print(f"Result of Ground Truth : {gt_score}")
+
+        statistic = run_generated_py_file(reference, gen_code, args.save_path+'/log/results/')
+        gen_code_score = statistic['error_stats']['Passed'] / len(gt_code)
+        print(f"Result of Your Outputs : {gen_code_score}")
+
+        santized_statistic = run_generated_py_file(reference, santized_gen_code, args.save_path+'/log/santized_results/')
+        santized_gen_code_score = santized_statistic['error_stats']['Passed'] / len(gt_code)
+        print(f"Result of Your Santized Outputs : {santized_gen_code_score}")
+
+    else:
+        # Run the generated Python files and log the results
+        if args.run_code:
+            if (Path(args.save_path)/'log').exists():
+                raise ValueError('Log file has exisied.')
+            else:
+                _ = run_generated_py_file(reference, gen_code, args.save_path+'/log/results/')
+                _ = run_generated_py_file(reference, santized_gen_code, args.save_path+'/log/santized_results/')
+        gt_score = evaluation(reference, gt_code)
+        print(f"Result of Ground Truth : {gt_score}")
+        
+        gen_code_score = evaluation(reference, gen_code)
+        print(f"Result of Your Outputs : {gen_code_score}")
+
+        santized_gen_code_score = evaluation(reference, santized_gen_code)
+        print(f"Result of Your Santized Outputs : {santized_gen_code_score}")
 
 
     # Print the evaluation results

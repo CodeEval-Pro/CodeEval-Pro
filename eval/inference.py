@@ -30,6 +30,8 @@ from eval.utils import (
     map_mbpp_pro_problem_cot,
     map_humaneval_pro_problem_1shot,
     map_mbpp_pro_problem_1shot,
+    get_bigcodebench_lite_pro_problems,
+    map_bigcodebench_lite_pro_problem
 )
 
 
@@ -54,12 +56,13 @@ DATASET_MAPPING={
     "mbpp_pro_cot": (get_mbpp_pro_raw_problems, map_mbpp_pro_problem_cot),
     "humaneval_pro_1shot":(get_humaneval_pro_raw_problems, map_humaneval_pro_problem_1shot),
     "mbpp_pro_1shot": (get_mbpp_pro_raw_problems, map_mbpp_pro_problem_1shot),
+    "bigcodebench_lite_pro": (get_bigcodebench_lite_pro_problems, map_bigcodebench_lite_pro_problem),
 }
 
 
 @dataclass(frozen=True)
 class Args:
-    dataset: Literal["humaneval", "mbpp", "humaneval_pro", "mbpp_pro", "humaneval_pro_cot", "mbpp_pro_cot", "humaneval_pro_1shot", "mbpp_pro_1shot"]
+    dataset: Literal["humaneval", "mbpp", "humaneval_pro", "mbpp_pro", "humaneval_pro_cot", "mbpp_pro_cot", "humaneval_pro_1shot", "mbpp_pro_1shot", "bigcodebench_lite_pro"]
     save_path: str
 
     n_batches: int
@@ -69,7 +72,6 @@ class Args:
     max_new_tokens: int
     top_p: float
     max_new_tokens: int
-    num_return_sequences: int
     temperature: float
     do_sample: bool
 
@@ -134,7 +136,7 @@ def main():
         generation_config = SamplingParams(
             temperature=args.temperature, 
             top_p=args.top_p if args.do_sample else 1.0,
-            n=args.num_return_sequences,
+            n=args.n_samples_per_problem,
             max_tokens=args.max_new_tokens,
             stop=EOS
             )
@@ -164,7 +166,7 @@ def main():
             do_sample=args.do_sample,
             temperature=args.temperature,
             max_new_tokens=args.max_new_tokens,
-            num_return_sequences=args.num_return_sequences,
+            num_return_sequences=args.n_samples_per_problem,
             top_p=args.top_p,
             pad_token_id=tokenizer.eos_token_id,
             eos_token_id=tokenizer.eos_token_id,
@@ -194,20 +196,33 @@ def main():
         completions = response['decoded_outputs']
         print("COMPLETION")
         print(completions[-1])
-        samples += [
-            dict(
-                task_id=task_id,
-                completion=[
-                        completion[
-                        : index
-                        if (index := completion.find("```")) != -1
-                        else len(completion)
-                                    ] 
-                for completion in completion_batch
-                ],
-            )
-            for task_id, completion_batch in zip(all_task_ids, completions)
-        ]
+        if len(completions[-1]) == 1:
+            completions = [c[0] for c in completions]
+            samples += [
+                dict(
+                    task_id=task_id,
+                    completion=completion[
+                            : index
+                            if (index := completion.find("```")) != -1
+                            else len(completion)] 
+                )
+                for task_id, completion in zip(all_task_ids, completions)
+            ]
+        else:
+            samples += [
+                dict(
+                    task_id=task_id,
+                    completion=[
+                            completion[
+                            : index
+                            if (index := completion.find("```")) != -1
+                            else len(completion)
+                                        ] 
+                    for completion in completion_batch
+                    ],
+                )
+                for task_id, completion_batch in zip(all_task_ids, completions)
+            ]
         # print(samples)
         write_jsonl(args.save_path, samples)
 

@@ -5,9 +5,9 @@ from openai import OpenAI
 from dataclasses import dataclass
 from tqdm.auto import tqdm
 from prompt_template import PROMPT_WRAPPER_API
-from typing import Any, Literal, Dict, Mapping, Iterable, Sequence, TypeVar, cast
+from typing import Any, Literal, cast
 from prompt_template import PROMPT_WRAPPER
-from utils import (
+from eval.utils import (
     read_jsonl, 
     write_jsonl, 
     get_humaneval_raw_problems,
@@ -22,7 +22,8 @@ from utils import (
     map_mbpp_pro_problem_cot,
     map_humaneval_pro_problem_1shot,
     map_mbpp_pro_problem_1shot,
-    
+    get_bigcodebench_lite_pro_problems,
+    map_bigcodebench_lite_pro_problem
 )
 
 from transformers import (
@@ -39,6 +40,7 @@ DATASET_MAPPING={
     "mbpp_pro_cot": (get_mbpp_pro_raw_problems, map_mbpp_pro_problem_cot),
     "humaneval_pro_1shot":(get_humaneval_pro_raw_problems, map_humaneval_pro_problem_1shot),
     "mbpp_pro_1shot": (get_mbpp_pro_raw_problems, map_mbpp_pro_problem_1shot),
+    "bigcodebench_lite_pro": (get_bigcodebench_lite_pro_problems, map_bigcodebench_lite_pro_problem),
 }
 
 
@@ -58,7 +60,7 @@ def make_request(prompt, model, api_key, base_url):
 
 @dataclass(frozen=True)
 class Args:
-    dataset: Literal["humaneval", "mbpp", "humaneval_pro", "mbpp_pro", "humaneval_pro_cot", "mbpp_pro_cot", "humaneval_pro_1shot", "mbpp_pro_1shot"]
+    dataset: Literal["humaneval", "mbpp", "humaneval_pro", "mbpp_pro", "humaneval_pro_cot", "mbpp_pro_cot", "humaneval_pro_1shot", "mbpp_pro_1shot", "bigcodebench_lite_pro"]
     save_path: str
     api_key: str
     base_url: str 

@@ -146,6 +146,43 @@ The choices of `DATASET` include:
 ["humaneval_pro", "mbpp_pro"]
 ```
 
+To evaluate your model on BigCodeBench-Lite Pro, run the following command:
+```sh
+export CUDA_VISIBLE_DEVICES=0
+set -ex
+WORK_DIR=result
+MODEL=Qwen/QwQ-32B-Preview
+MODEL_PATH=Qwen/QwQ-32B-Preview
+TASK_TYPE=bigcodebench_lite_pro
+mkdir -p ${WORK_DIR}/${MODEL}/${TASK_TYPE}/outputs/
+
+python -m eval.inference \
+  --model_name_or_path $MODEL_PATH \
+  --save_path ${WORK_DIR}/${MODEL}/${TASK_TYPE}/outputs/results.jsonl \
+  --dataset $TASK_TYPE \
+  --is_use_vllm true \
+  --do_sample false \
+  --temperature 0.0 \
+  --top_p 1.0 \
+  --max_new_tokens 4096 \
+  --n_problems_per_batch 28 \
+  --n_samples_per_problem 1 \
+  --n_batches 1 
+
+rm -rf ${WORK_DIR}/${MODEL}/${TASK_TYPE}/log
+python -m eval.santize \
+    --model_name $MODEL \
+    --source_path ${WORK_DIR}/${MODEL}/${TASK_TYPE}/outputs/ \
+    
+python -m eval.harness \
+    --model_name $MODEL \
+    --task $TASK_TYPE \
+    --dataset_path /work/zhuotaodeng/yzj/evalpro/dataset/refined_${TASK_TYPE}.json \
+    --source_path ${WORK_DIR}/${MODEL}/${TASK_TYPE}/outputs/ \
+    --save_path ${WORK_DIR}/${MODEL}/${TASK_TYPE} 
+    # --run_code
+```
+
 
 To obtain the result of original HumanEval and MBPP, we recommend using the [evalplus](https://github.com/evalplus/evalplus) library with the following command.
 

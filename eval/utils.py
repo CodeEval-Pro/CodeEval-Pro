@@ -203,6 +203,29 @@ def map_mbpp_pro_problem_1shot(p: dict) -> Dict[str, Any]:
         id=id, instruction=instruction, response_prefix=response_prefix
     )
 
+def get_bigcodebench_lite_pro_problems() -> list[dict]:
+    problems = read_jsonl('dataset/refined_bigcodebench_lite_pro.json')
+    return list(problems)
+
+def map_bigcodebench_lite_pro_problem(p: dict) -> Dict[str, Any]:
+    id = p["id"]
+    prompt1 = p["raw_problem"].strip()
+    prompt2 = p["new_problem"].strip()
+    example = p['test_code'].split('\n')[0]
+    instruction = f"""Write a solution of python file to the following problems, the solution of the second problem requires single or multiple calls to the first solution.
+```python
+{prompt1}
+{prompt2}
+
+```"""
+    response_prefix = f"""```python
+{prompt1}
+"""
+    return dict(
+        id=id, instruction=instruction, response_prefix=response_prefix
+    )
+
+
 # def write_jsonl(path: str | Path, data: Sequence[Mapping]):
 #     # cannot use `dict` here as it is invariant
 #     with Path(path).open("w") as f:
