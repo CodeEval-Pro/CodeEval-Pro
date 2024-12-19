@@ -19,7 +19,12 @@ dependencies = [
   "tqdm>=4.67.0",
   "evaluate>=0.4.3",
   "datasets>=3.0.2",
-  "evalplus>=0.3.1"
+  "evalplus>=0.3.1",
+  "scikit-learn>=1.6.0",
+  "scipy>=1.14.1",
+  "seaborn>=0.13.2",
+  "sympy>=1.13.3",
+  "matplotlib>=3.9.4"
 ]
 
 [tool.setuptools.packages]
