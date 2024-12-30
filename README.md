@@ -17,8 +17,7 @@ Self-invoking Code Generation Task
   <a href=""><b>[🏆 Leaderboard]</b></a> •
   <a href=""><b>[📜 Paper]</b></a> •
   <a href=""><b>[🐱 GitHub]</b></a> •
-  <a href=""><b>[🐦 Twitter]</b></a> 
-
+  <!-- <a href=""><b>[🐦 Twitter]</b></a>  -->
   <!-- <a href="#-quick-start">Quick Start</a> • -->
   <!-- <a href="#%EF%B8%8F-citation">Citation</a> -->
 </p>
@@ -97,7 +96,7 @@ The choices of `TASK_TYPE` include:
 To run API models, use
 ```sh
 set -ex
-WORK_DIR=/work/zhuotaodeng/yzj/evalpro/result
+WORK_DIR=evalpro/result
 MODEL=GPT-4o 
 
 TASK_TYPE=humaneval_pro      
@@ -177,7 +176,7 @@ python -m eval.santize \
 python -m eval.harness \
     --model_name $MODEL \
     --task $TASK_TYPE \
-    --dataset_path /work/zhuotaodeng/yzj/evalpro/dataset/refined_${TASK_TYPE}.json \
+    --dataset_path evalpro/dataset/refined_${TASK_TYPE}.json \
     --source_path ${WORK_DIR}/${MODEL}/${TASK_TYPE}/outputs/ \
     --save_path ${WORK_DIR}/${MODEL}/${TASK_TYPE} 
     # --run_code
