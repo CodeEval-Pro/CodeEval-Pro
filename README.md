@@ -16,7 +16,7 @@ Self-invoking Code Generation Task
   <a href=""><b>[📜 Homepage]</b></a> •
   <a href=""><b>[🏆 Leaderboard]</b></a> •
   <a href=""><b>[📜 Paper]</b></a> •
-  <a href=""><b>[🐱 GitHub]</b></a> •
+  <a href=""><b>[🐱 GitHub]</b></a> 
   <!-- <a href=""><b>[🐦 Twitter]</b></a>  -->
   <!-- <a href="#-quick-start">Quick Start</a> • -->
   <!-- <a href="#%EF%B8%8F-citation">Citation</a> -->
@@ -27,25 +27,38 @@ Repo for "<a href="" target="_blank">HumanEval Pro and MBPP Pro: Evaluating Larg
 Self-invoking Code Generation Task</a>" 
 </p>
 
+
+
 <p align="center">
-    <img src="./assets/evaluation_pipeline.png" width="800">
-        <br>
-    <em>Figure 1: Evaluation pipeline of HumanEval Pro and MBPP Pro. </em>
+    <img src="./assets/distribution.png" width="800">
+    <br>
+    <!-- <img src="./assets/bcb-lite-pro.png" width="800"> -->
+    <!-- <br> -->
+    <em>Figure 1: Statistics of model performance. </em>
 </p>
 
 ## 🔥 News
 
-- [2024/12/08] Paper, Code, Benchmarks all released.
+- [2024/12/31] Paper, Code, Benchmarks all released.
 
 ## 💡 Introduction
-<img src="./assets/logo.png" width="30" alt="CodeEval-Pro" /> HumanEval Pro and MBPP Pro are a series of benchmarks to evaluate LLMs on self-invoking code generation task. In self-invoking code generatio task,
-LLMs are given a base problem and a related, more complex problem. They are required to solve the base problem and use its solution to address the complex problems.
-
+HumanEval Pro and MBPP Pro are a series of benchmarks to evaluate LLMs on self-invoking code generation task. We introduce self-invoking code generation,
+a new task designed to evaluate the progres-
+sive reasoning and problem-solving capabili-
+ties of LLMs. In this task, models are presented
+with a base problem and a related, more com-
+plex problem. They must solve the base prob-
+lem and then utilize its solution to address the
+more complex one. 
+<p align="center">
+    <img src="./assets/evaluation_pipeline.png" width="800">
+    <em>Figure 2: Evaluation pipeline of HumanEval Pro and MBPP Pro. </em>
+</p>
 
 <p align="center">
     <img src="./assets/example.png" width="800">
         <br>
-    <em>Figure 2: An example of HumanEval Pro and MBPP Pro. </em>
+    <em>Figure 3: An example of HumanEval Pro and MBPP Pro. </em>
 </p>
 
 
