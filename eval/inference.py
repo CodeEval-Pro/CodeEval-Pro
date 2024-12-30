@@ -143,7 +143,6 @@ def main():
         model = LLM(
             model=args.model_name_or_path, 
             max_model_len=8192, 
-            download_dir='/data/zhuotaodeng/pretrained_models/',
             tensor_parallel_size=CUDA_NUM,
             trust_remote_code=True,
             gpu_memory_utilization=0.9
@@ -152,7 +151,6 @@ def main():
     else:
         model = AutoModelForCausalLM.from_pretrained(
             args.model_name_or_path, 
-            cache_dir='/data/zhuotaodeng/pretrained_models/', 
             trust_remote_code=True,
             **other_kwargs
             )

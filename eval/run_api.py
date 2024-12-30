@@ -27,7 +27,7 @@ from eval.utils import (
 )
 
 from transformers import (
-    HfArgumentParser,
+    HfArgumentParser
 )
 
 
