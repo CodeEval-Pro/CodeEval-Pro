@@ -6,7 +6,8 @@ Self-invoking Code Generation Task
 </h1>
 
 <div align="center">
-
+	
+![](https://img.shields.io/badge/2412.21199-Arxiv-red)
 ![](https://img.shields.io/badge/Task-Code_Related-blue)
 ![](https://img.shields.io/badge/Code_License-MIT-green)
 
