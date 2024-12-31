@@ -14,9 +14,10 @@ Self-invoking Code Generation Task
 </div>
 
 <p align="center">
-  <a href="https://answers111.github.io/evalpro.github.io/"><b>[📜 Homepage]</b></a> •
+  <a href="https://answers111.github.io/evalpro.github.io/"><b>[🌐 Website]</b></a> •
   <a href="https://answers111.github.io/evalpro.github.io/leaderboard.html"><b>[🏆 Leaderboard]</b></a> •
   <a href="http://arxiv.org/abs/2412.21199"><b>[📜 Paper]</b></a> •
+  <a href="https://huggingface.co/CodeEval-Pro"><b>[🤗 HF Models]</b></a> •
   <a href="https://github.com/CodeEval-Pro/CodeEval-Pro"><b>[🐱 GitHub]</b></a> 
   <!-- <a href=""><b>[🐦 Twitter]</b></a>  -->
   <!-- <a href="#-quick-start">Quick Start</a> • -->
