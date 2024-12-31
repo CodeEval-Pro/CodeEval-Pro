@@ -5,18 +5,14 @@ from typing import Any, Dict, Mapping, Sequence
 from datasets import load_dataset, Dataset
 from evalplus.data import get_human_eval_plus, get_mbpp_plus, write_jsonl
 
-def get_swebench_problems() -> Dataset:
-    problems = load_dataset('princeton-nlp/SWE-bench_Lite_oracle', split = 'test')
-    return problems
-
 
 def get_mbpp_pro_raw_problems() -> list[dict]:
-    problems = read_jsonl('dataset/refined_mbpp_pro.json')
+    problems = load_dataset('CodeEval-Pro/mbpp-pro',split='train')
     return list(problems)
 
 
 def get_humaneval_pro_raw_problems() -> list[dict]:
-    problems = read_jsonl('dataset/refined_humaneval_pro.json')
+    problems = load_dataset('CodeEval-Pro/humaneval-pro',split='train')
     return list(problems)
 
 def map_swebench_problem(p: Dataset) -> Dict[str, Any]:
@@ -204,7 +200,8 @@ def map_mbpp_pro_problem_1shot(p: dict) -> Dict[str, Any]:
     )
 
 def get_bigcodebench_lite_pro_problems() -> list[dict]:
-    problems = read_jsonl('dataset/refined_bigcodebench_lite_pro.json')
+    # problems = read_jsonl('dataset/refined_bigcodebench_lite_pro.json')
+    problems = load_dataset('CodeEval-Pro/bigcodebench-lite-pro',split='train')
     return list(problems)
 
 def map_bigcodebench_lite_pro_problem(p: dict) -> Dict[str, Any]:
