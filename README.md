@@ -204,12 +204,19 @@ evalplus.evaluate --dataset $TASK_TYPE --samples ${OUTPUT_DIR}/${MODEL}/${TASK_T
 
 This code repository is licensed under the MIT License. 
 
-<!-- ## ☕️ Citation
+## ☕️ Citation
 
 If you find this repository helpful, please consider citing our paper:
 
 ```
-``` -->
+@misc{yu-2024,
+	author = {Yu, Zhaojian and Zhao, Yilun and Cohan, Arman and Zhang, Xiao-Ping},
+	month = {12},
+	title = {{HumanEval Pro and MBPP Pro: Evaluating large language models on self-invoking code Generation}},
+	year = {2024},
+	url = {https://arxiv.org/abs/2412.21199},
+}
+``` 
 
 ## Acknowledgement
 Our evaluation code is inspired by [Magicoder](https://github.com/ise-uiuc/magicoder) and [WaveCoder](https://github.com/microsoft/WaveCoder). We thanks [Evalplus](https://github.com/evalplus/evalplus) for providing the evaluation of original HumanEval and MBPP.
