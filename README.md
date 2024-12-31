@@ -42,9 +42,7 @@ Self-invoking Code Generation Task</a>"
 - [2024/12/31] Paper, Code, Benchmarks all released.
 
 ## 💡 Introduction
-HumanEval Pro and MBPP Pro are a series of benchmarks to evaluate LLMs on self-invoking code generation task. We introduce self-invoking code generation,
-a new task designed to evaluate the progressive reasoning and problem-solving capabilities of LLMs. In this task, models are presented with a base problem and a related, more complex problem. They must solve the base problem and then utilize its solution to address the more complex one. 
-
+We present HumanEval Pro and MBPP Pro, two expanded versions of the traditional HumanEval and MBPP benchmarks to evaluate LLMs on self-invoking code generation task. Self-invoking code generation, a new task designed to evaluate the progressive reasoning and problem-solving capabilities of LLMs. In this task, models are presented with a base problem and a related, more complex problem. They must solve the base problem and then utilize its solution to address the more complex one.
 <p align="center">
     <img src="./assets/evaluation_pipeline.png" width="800">
     <br>
