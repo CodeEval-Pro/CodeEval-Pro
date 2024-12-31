@@ -15,6 +15,7 @@ def get_humaneval_pro_raw_problems() -> list[dict]:
     problems = load_dataset('CodeEval-Pro/humaneval-pro',split='train')
     return list(problems)
 
+
 def map_swebench_problem(p: Dataset) -> Dict[str, Any]:
     id = p["instance_id"]
     prompt = p["text"]
@@ -24,6 +25,7 @@ def map_swebench_problem(p: Dataset) -> Dict[str, Any]:
     return dict(
         id=id, instruction=instruction, response_prefix=response_prefix
     )
+
 
 def map_mbpp_pro_problem(p: dict) -> Dict[str, Any]:
     id = p["id"]
