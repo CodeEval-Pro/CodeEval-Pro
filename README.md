@@ -23,7 +23,7 @@ Self-invoking Code Generation Task
 </p>
 
 <p align="center">
-Repo for "<a href="" target="_blank">HumanEval Pro and MBPP Pro: Evaluating Large Language Models on
+Repo for "<a href="http://arxiv.org/abs/2412.21199" target="_blank">HumanEval Pro and MBPP Pro: Evaluating Large Language Models on
 Self-invoking Code Generation Task</a>" 
 </p>
 
