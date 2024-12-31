@@ -47,6 +47,7 @@ a new task designed to evaluate the progressive reasoning and problem-solving ca
 
 <p align="center">
     <img src="./assets/evaluation_pipeline.png" width="800">
+    <br>
     <em>Figure 2: Evaluation pipeline of HumanEval Pro and MBPP Pro. </em>
 </p>
 
