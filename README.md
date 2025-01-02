@@ -18,8 +18,8 @@ Self-invoking Code Generation Task
   <a href="https://answers111.github.io/evalpro.github.io/leaderboard.html"><b>[🏆 Leaderboard]</b></a> •
   <a href="http://arxiv.org/abs/2412.21199"><b>[📜 Paper]</b></a> •
   <a href="https://huggingface.co/CodeEval-Pro"><b>[🤗 HF Datasets]</b></a> •
-  <a href="https://github.com/CodeEval-Pro/CodeEval-Pro"><b>[🐱 GitHub]</b></a> 
-  <!-- <a href=""><b>[🐦 Twitter]</b></a>  -->
+<!--   <a href="https://github.com/CodeEval-Pro/CodeEval-Pro"><b>[🐱 GitHub]</b></a>  -->
+  <a href="https://x.com/yfngnin4/status/1874294549151179119"><b>[🐦 Twitter]</b></a> 
   <!-- <a href="#-quick-start">Quick Start</a> • -->
   <!-- <a href="#%EF%B8%8F-citation">Citation</a> -->
 </p>
