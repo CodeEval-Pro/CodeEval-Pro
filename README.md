@@ -209,12 +209,11 @@ This code repository is licensed under the MIT License.
 If you find this repository helpful, please consider citing our paper:
 
 ```
-@misc{yu-2024,
-	author = {Yu, Zhaojian and Zhao, Yilun and Cohan, Arman and Zhang, Xiao-Ping},
-	month = {12},
-	title = {{HumanEval Pro and MBPP Pro: Evaluating large language models on self-invoking code Generation}},
-	year = {2024},
-	url = {https://arxiv.org/abs/2412.21199},
+@article{yu2024humaneval,
+  title={HumanEval Pro and MBPP Pro: Evaluating Large Language Models on Self-invoking Code Generation},
+  author={Yu, Zhaojian and Zhao, Yilun and Cohan, Arman and Zhang, Xiao-Ping},
+  journal={arXiv preprint arXiv:2412.21199},
+  year={2024}
 }
 ``` 
 
