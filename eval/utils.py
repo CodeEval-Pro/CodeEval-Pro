@@ -69,8 +69,6 @@ def get_mbpp_raw_problems() -> list[dict]:
     return list(problems.values())
 
 
-
-
 def get_humaneval_raw_problems() -> list[dict]:
     problems = get_human_eval_plus()
     return list(problems.values())
@@ -117,6 +115,7 @@ def map_humaneval_problem(p: dict) -> Dict[str, Any]:
         id=id, instruction=instruction, response_prefix=response_prefix
     )
 
+
 def map_humaneval_pro_problem_cot(p: dict) -> Dict[str, Any]:
     id = p["id"]
     prompt1 = p["raw_problem"].strip()
@@ -161,6 +160,7 @@ def read_jsonl(path: str | Path):
         return json.load(f)
         # return [json.loads(line) for line in f]
 
+
 def map_humaneval_pro_problem_1shot(p: dict) -> Dict[str, Any]:
     id = p["id"]
     prompt1 = p["raw_problem"].strip()
@@ -182,6 +182,7 @@ def map_humaneval_pro_problem_1shot(p: dict) -> Dict[str, Any]:
         id=id, instruction=instruction, response_prefix=response_prefix
     )
 
+
 def map_mbpp_pro_problem_1shot(p: dict) -> Dict[str, Any]:
     id = p["id"]
     prompt1 = p["raw_problem"].strip()
@@ -200,6 +201,7 @@ def map_mbpp_pro_problem_1shot(p: dict) -> Dict[str, Any]:
     return dict(
         id=id, instruction=instruction, response_prefix=response_prefix
     )
+
 
 def get_bigcodebench_lite_pro_problems() -> list[dict]:
     # problems = read_jsonl('dataset/refined_bigcodebench_lite_pro.json')
