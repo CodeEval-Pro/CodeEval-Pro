@@ -2,7 +2,7 @@
 <img src="./assets/logo.png" width="80" alt="CodeEval-Pro" />
 <br>
 HumanEval Pro and MBPP Pro: Evaluating Large Language Models on
-Self-invoking Code Generation Task
+Self-invoking Code Generation
 </h1>
 
 <div align="center">
