@@ -131,7 +131,7 @@
         "id": 16,
         "raw_problem": "\n\ndef count_distinct_characters(string: str) -> int:\n    \"\"\" Given a string, find out how many distinct characters (regardless of case) does it consist of\n    >>> count_distinct_characters('xyzXYZ')\n    3\n    >>> count_distinct_characters('Jerry')\n    4\n    \"\"\"\n",
         "raw_solution": "    return len(set(string.lower()))\n",
-        "new_problem": "# Given a list of strings, find out how many distinct characters (regardless of case) are present across all strings. For example, if the list is ['xyzXYZ', 'Jerry'], the output should be 5 because the distinct characters are 'x', 'y', 'z', 'j', 'e'.\ndef count_distinct_characters_across_strings(strings: list) -> int:\n",
+        "new_problem": "# Given a list of strings, find out how many distinct characters (regardless of case) are present across all strings. For example, if the list is ['xyzXYZ', 'Jerry'], the output should be 6 because the distinct characters are 'x', 'y', 'z', 'j', 'e', 'r'.\ndef count_distinct_characters_across_strings(strings: list) -> int:\n",
         "new_solution": "    distinct_characters = set()\n    for string in strings:\n        distinct_characters.update(string.lower())  # Converting to lowercase for case-insensitive counting\n    return len(distinct_characters)\n\n",
         "test_code": "\nassert count_distinct_characters_across_strings(['xyzXYZ', 'Jerry']) == 6\nassert count_distinct_characters_across_strings(['Hello', 'world']) == 7\nassert count_distinct_characters_across_strings(['Python', 'java']) == 9\nassert count_distinct_characters_across_strings(['', '']) == 0\nassert count_distinct_characters_across_strings(['Aa', 'aA']) == 1"
     },
